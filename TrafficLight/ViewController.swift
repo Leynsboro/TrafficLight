@@ -15,6 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet var greenLight: UIView!
     @IBOutlet var startButtonOutlet: UIButton!
     
+    enum Colors {
+        case red, yellow, green
+    }
+    
+    var color = Colors.red
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,23 @@ class ViewController: UIViewController {
     
     
     @IBAction func startButtonPressed() {
+        startButtonOutlet.setTitle("NEXT", for: .normal)
+        
+        switch color {
+        case .red:
+            greenLight.alpha = 0.3
+            redLight.alpha = 1
+            color = .yellow
+        case .yellow:
+            redLight.alpha = 0.3
+            yellowLight.alpha = 1
+            color = .green
+        case .green:
+            yellowLight.alpha = 0.3
+            greenLight.alpha = 1
+            color = .red
+        }
+        
     }
     
     
